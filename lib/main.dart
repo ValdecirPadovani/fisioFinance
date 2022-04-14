@@ -1,10 +1,21 @@
-import 'package:fisiofinance/telas/Home.dart';
+import 'package:fisiofinance/rotas.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart' ;
+import 'firebase_options.dart';
 
-void main() {
-  runApp(MaterialApp(
-    title: "Fisio Finance",
+void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+    runApp(MaterialApp(
+    title: "Cadastro Fornecedor",
     debugShowCheckedModeBanner: false,
-    home: Home(),
+    //home: Login(),
+      initialRoute: "/",
+      onGenerateRoute: Rotas.gerarRota,
   ));
 }
+
